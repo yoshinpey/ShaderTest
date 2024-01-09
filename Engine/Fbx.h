@@ -17,7 +17,8 @@ class Texture;
 enum RENDER_STATE
 {
 	RENDER_DIRLIGHT,
-	RENDER_PNTLIGH
+	RENDER_PNTLIGH,
+	RENDER_TOONLIGHT,
 };
 
 class Fbx
@@ -80,6 +81,6 @@ public:
 	Fbx();
 	HRESULT Load(std::string fileName);		// FBXファイルの読み込み
 	void Draw(Transform& transform);		// FBXモデルの描画
-	void	SetRenderingShader(RENDER_STATE _state) { state_ = _state; }
+	void SetRenderingShader(RENDER_STATE _state) { state_ = _state; }
 	void Release();							// メモリの解放
 };

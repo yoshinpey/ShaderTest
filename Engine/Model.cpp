@@ -69,7 +69,7 @@ void Model::Release()
 void Model::ToggleRenderState()
 {
 	int n = (int)(Model::state_);
-	Model::state_ = (RENDER_STATE)(++n % 2);
+	Model::state_ = (RENDER_STATE)(++n % 3);
 	for (auto& theI : modelList)
 	{
 		theI->pfbx_->SetRenderingShader(Model::state_);
