@@ -180,6 +180,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
+    <FxCompile Include="Toon3D.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

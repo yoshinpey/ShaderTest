@@ -57,6 +57,9 @@ HRESULT Fbx::Load(std::string fileName)
 
 	//マネージャ解放
 	pFbxManager->Destroy();
+
+	pToonTex_ = new Texture;
+	pToonTex_->Load("Assets\\toon2.png");
 	return S_OK;
 }
 
@@ -250,10 +253,14 @@ void Fbx::InitMaterial(fbxsdk::FbxNode* pNode)
 
 void Fbx::Draw(Transform& transform)
 {
+	/*
 	if (state_ == RENDER_DIRLIGHT)
 		Direct3D::SetShader(SHADER_3D);
 	else
 		Direct3D::SetShader(SHADER_POINT);
+	*/
+
+	Direct3D::SetShader(SHADER_TOON);
 
 	transform.Calclation();//トランスフォームを計算
 
@@ -301,6 +308,9 @@ void Fbx::Draw(Transform& transform)
 
 			ID3D11ShaderResourceView* pSRV = pMaterialList_[i].pTexture->GetSRV();
 			Direct3D::pContext_->PSSetShaderResources(0, 1, &pSRV);
+
+			ID3D11ShaderResourceView* pSRVToon = pToonTex_->GetSRV();
+			Direct3D::pContext_->PSSetShaderResources(1, 1, &pSRVToon);
 		}
 
 		//描画

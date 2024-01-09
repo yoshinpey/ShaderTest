@@ -74,6 +74,8 @@ class Fbx
 	void InitMaterial(fbxsdk::FbxNode* pNode);
 
 	RENDER_STATE state_;
+	Texture* pToonTex_;
+
 public:
 	Fbx();
 	HRESULT Load(std::string fileName);		// FBXファイルの読み込み
