@@ -49,7 +49,6 @@ VS_OUT VS(float4 pos : POSITION, float4 uv : TEXCOORD, float4 normal : NORMAL)
 
     // ローカル座標に、ワールド・ビュー・プロジェクション行列をかけて
     // スクリーン座標に変換し、ピクセルシェーダーへ
-    pos = pos + normal * 0.5;  // ふとらせる(アウトラインうんぬん)
     outData.pos = mul(pos, matWVP);
     outData.uv = uv;
     normal.w = 0;
@@ -61,6 +60,16 @@ VS_OUT VS(float4 pos : POSITION, float4 uv : TEXCOORD, float4 normal : NORMAL)
     outData.color = saturate(dot(normal, light));
     float4 posw = mul(pos, matW);
     outData.eyev = eyePosition - posw;
+
+    // アウトライン用のオフセットを加える
+    float outlineOffset = 0.02; // アウトラインの太さ調整
+    float4 outlinePos = pos + normal * outlineOffset;
+
+    // アウトライン用の頂点情報を出力
+    VS_OUT outlineData = (VS_OUT)0;
+    outlineData.pos = mul(outlinePos, matWVP);
+    outlineData.uv = uv;
+    outlineData.normal = normal;
 
     // まとめて出力
     return outData;
@@ -96,5 +105,25 @@ float4 PS(VS_OUT inData) : SV_Target
         ambient = lightSource * g_texture.Sample(g_sampler, inData.uv) * ambientColor;
     }
 
-    return diffuse + ambient + specular;
+    // アウトラインの色を指定
+    float4 outlineColor = float4(1.0, 1.0, 1.0, 1.0); // アウトラインカラー
+
+    // アウトライン用のピクセルシェーダー
+    float4 outlinePixel = outlineColor;
+
+    // オリジナルのピクセルシェーダー処理
+    float4 originalPixel = diffuse + ambient + specular;
+
+    // アウトラインの描画条件を設定
+    bool isOutline = dot(normalize(inData.eyev), normalize(inData.normal)) < 0.5; // 例: 視線と法線が一致する場合にアウトラインを描画
+
+    // アウトラインの描画
+    if (isOutline)
+    {
+        return outlinePixel;
+    }
+    else
+    {
+        return originalPixel;
+    }
 }
