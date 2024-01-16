@@ -115,7 +115,7 @@ float4 PS(VS_OUT inData) : SV_Target
     float4 originalPixel = diffuse + ambient + specular;
 
     // アウトラインの描画条件を設定
-    bool isOutline = dot(normalize(inData.eyev), normalize(inData.normal)) < 0.5; // 例: 視線と法線が一致する場合にアウトラインを描画
+    bool isOutline = dot(normalize(inData.eyev), normalize(inData.normal)) < 0.3; // 例: 視線と法線が一致する場合にアウトラインを描画
 
     // アウトラインの描画
     if (isOutline)
