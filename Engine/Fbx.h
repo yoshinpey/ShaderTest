@@ -19,6 +19,7 @@ enum RENDER_STATE
 	RENDER_DIRLIGHT,
 	RENDER_PNTLIGH,
 	RENDER_TOONLIGHT,
+	RENDER_NORMALMAP,
 };
 
 class Fbx
@@ -42,7 +43,8 @@ class Fbx
 		XMFLOAT4	ambientColor;
 		XMFLOAT4	specularColor;
 		FLOAT		shininess;
-		int			isTextured;		// テクスチャを使用するかのフラグ
+		BOOL			isTextured;		// テクスチャを使用するかのフラグ
+		BOOL			isNormalmap;		// テクスチャを使用するかのフラグ
 	};
 
 	struct VERTEX
@@ -50,6 +52,7 @@ class Fbx
 		XMVECTOR position;			// 頂点座標
 		XMVECTOR uv;				// UV座標
 		XMVECTOR normal;			// 法線ベクトル
+		XMVECTOR tangent;			// 接線ベクトル
 	};
 
 	int vertexCount_;				// 頂点数

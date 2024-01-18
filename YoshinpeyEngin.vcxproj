@@ -165,6 +165,7 @@
     <ClCompile Include="TheMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="NormalMaping.hlsl" />
     <FxCompile Include="PointLightShading.hlsl" />
     <FxCompile Include="Simple2D.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

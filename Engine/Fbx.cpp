@@ -248,6 +248,36 @@ void Fbx::InitMaterial(fbxsdk::FbxNode* pNode)
 			pMaterialList_[i].pTexture = nullptr;
 			//マテリアルの色
 		}
+
+		//テクスチャ情報
+		FbxProperty  lProperty = pMaterial->FindProperty(FbxSurfaceMaterial::sBump);
+
+		//テクスチャの数数
+		int fileTextureCount = lProperty.GetSrcObjectCount<FbxFileTexture>();
+
+		//テクスチャあり
+		if (fileTextureCount)
+		{
+			FbxFileTexture* textureInfo = lProperty.GetSrcObject<FbxFileTexture>(0);
+			const char* textureFilePath = textureInfo->GetRelativeFileName();
+
+			//ファイル名+拡張だけにする
+			char name[_MAX_FNAME];	//ファイル名
+			char ext[_MAX_EXT];	//拡張子
+			_splitpath_s(textureFilePath, nullptr, 0, nullptr, 0, name, _MAX_FNAME, ext, _MAX_EXT);
+			wsprintf(name, "%s%s", name, ext);
+
+			//ファイルからテクスチャ作成
+			pMaterialList_[i].pTexture = new Texture;
+			HRESULT hr = pMaterialList_[i].pTexture->Load(name);
+			assert(hr == S_OK);
+		}
+		//テクスチャ無し
+		else
+		{
+			pMaterialList_[i].pTexture = nullptr;
+			//マテリアルの色
+		}
 	}
 }
 
@@ -275,8 +305,8 @@ void Fbx::Draw(Transform& transform)
 		cb.specularColor = pMaterialList_[i].specular;
 		cb.shininess = pMaterialList_[i].shininess;
 		cb.isTextured = pMaterialList_[i].pTexture != nullptr;
+		cb.isNormalmap = pMaterialList_[i].pNormalmap != nullptr;
 
-		//ここー－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 		// コンスタントバッファの更新
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
 		Direct3D::pContext_->Map(pConstantBuffer_, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
@@ -308,6 +338,11 @@ void Fbx::Draw(Transform& transform)
 
 			ID3D11ShaderResourceView* pSRVToon = pToonTex_->GetSRV();
 			Direct3D::pContext_->PSSetShaderResources(1, 1, &pSRVToon);
+		}
+
+		if (pMaterialList_[i].pNormalmap)
+		{
+			ID3D11ShaderResourceView*pSRV = 
 		}
 
 		//描画
