@@ -34,6 +34,7 @@ namespace Direct3D
 	HRESULT InitShader();
 	HRESULT InitShader3D();
 	HRESULT InitShader2D();
+	HRESULT InitShaderNormalMap();
 	HRESULT InitShaderToon();
 	HRESULT InitShaderPointLight();
 
