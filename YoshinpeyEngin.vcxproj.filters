@@ -129,7 +129,7 @@
     <FxCompile Include="Toon3D.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
-    <FxCompile Include="NormalMaping.hlsl">
+    <FxCompile Include="NormalMapping.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>

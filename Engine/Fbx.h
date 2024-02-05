@@ -44,8 +44,8 @@ class Fbx
 		XMFLOAT4	ambientColor;
 		XMFLOAT4	specularColor;
 		FLOAT		shininess;
-		BOOL			isTextured;		// テクスチャを使用するかのフラグ
-		BOOL			isNormalmap;		// テクスチャを使用するかのフラグ
+		BOOL		isTextured;		// テクスチャを使用するかのフラグ
+		BOOL		isNormalmap;		// テクスチャを使用するかのフラグ
 	};
 
 	struct VERTEX

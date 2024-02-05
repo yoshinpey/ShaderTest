@@ -18,8 +18,8 @@ cbuffer gmodel:register(b0)
 	float4		ambientColor;		//環境光
 	float4		specularColor;		//鏡面反射＝ハイライトの係数
 	float		shininess;			//ハイライトの広がりの大きさ
-	int		hasTexture;			//テクスチャーが貼られているかどうか
-	int		hasNormalMap;		//ノーマルマップがあるかどうか
+	int		isTexture;			//テクスチャーが貼られているかどうか
+	int		isNormalmap;		//ノーマルマップがあるかどうか
 };
 
 cbuffer gmodel:register(b1)
@@ -104,7 +104,7 @@ float4 PS(VS_OUT inData) : SV_Target
 	float4 ambient;
 	float4 specular;
 
-	if (hasNormalMap)
+	if (isNormalmap)
 	{
 		float4 tmpNormal = normalTex.Sample(g_sampler, inData.uv) * 2.0f - 1.0f;
 
@@ -115,7 +115,7 @@ float4 PS(VS_OUT inData) : SV_Target
 		float4 reflection = reflect(normalize(inData.light), tmpNormal);
 		float4 specular = pow(saturate(dot(reflection, normalize(inData.Neyev))), shininess) * specularColor;
 
-		if (hasTexture != 0)
+		if (isTexture != 0)
 		{
 			diffuse = lightSource * g_texture.Sample(g_sampler, inData.uv) * NL;
 			ambient = lightSource * g_texture.Sample(g_sampler, inData.uv) * ambientColor;
@@ -131,7 +131,7 @@ float4 PS(VS_OUT inData) : SV_Target
 	{
 		float4 reflection = reflect(normalize(lightPosition), inData.normal);
 		float4 specular = pow(saturate(dot(reflection, inData.eyev)), shininess) * specularColor;
-		if (hasTexture == 0)
+		if (isTexture == 0)
 		{
 			diffuse = lightSource * diffuseColor * inData.color;
 			ambient = lightSource * diffuseColor * ambientColor;
