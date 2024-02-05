@@ -18,8 +18,10 @@ Stage::~Stage()
 //初期化
 void Stage::Initialize()
 {
-    //モデルデータのロード
-    hModel_ = Model::Load("Assets/Torus.fbx");
+    ////モデルデータのロード
+    //hModel_ = Model::Load("Assets/DO-NATU.fbx");
+    //assert(hModel_ >= 0);
+    hModel_ = Model::Load("Assets/DO-NATU.fbx");
     assert(hModel_ >= 0);
 
     hGround_ = Model::Load("Assets/Ground.fbx");

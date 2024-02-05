@@ -18,6 +18,7 @@ enum SHADER_TYPE
 	SHADER_3D,		//3Dシェーダー
 	SHADER_POINT,	//ポイントシェーダー
 	SHADER_TOON,	//トゥーンシェーダー
+	SHADER_NORMALMAP,	// ノーマルマップ
 	SHADER_MAX		//シェーダーの最大数
 };
 

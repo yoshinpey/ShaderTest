@@ -28,6 +28,7 @@ class Fbx
 	struct MATERIAL
 	{
 		Texture*	pTexture;		// テクスチャへのポインタ
+		Texture* pNormalmap;
 		XMFLOAT4	diffuse;		// ディフューズカラー
 		XMFLOAT4 ambiemt;
 		XMFLOAT4 specular;
