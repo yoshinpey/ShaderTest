@@ -21,7 +21,7 @@ void Stage::Initialize()
     ////モデルデータのロード
     //hModel_ = Model::Load("Assets/DO-NATU.fbx");
     //assert(hModel_ >= 0);
-    hModel_ = Model::Load("Assets/DO-NATU.fbx");
+    hModel_ = Model::Load("Assets/magicalDice2.fbx");
     assert(hModel_ >= 0);
 
     hGround_ = Model::Load("Assets/Ground.fbx");
@@ -33,7 +33,7 @@ void Stage::Initialize()
 
     trDonuts.position_ = { 0, 0, 0 };
     trDonuts.rotate_ = { 0, 0, 0 };
-    trDonuts.scale_ = { 1,1,1 };
+    trDonuts.scale_ = { 0.2,0.2,0.2 };
 
     trGround.position_ = { 0, 0, 0 };
     trGround.rotate_ = { 0, 0, 0 };

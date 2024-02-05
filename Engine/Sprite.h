@@ -18,6 +18,8 @@ private:
 	struct CONSTANT_BUFFER
 	{
 		XMMATRIX	matNormal;		//ワールド行列
+		XMMATRIX	uvTrans;	// テクスチャ座標変換行列
+		XMFLOAT4	color;		// テクスチャとの合成色
 	};
 
 	//頂点情報
@@ -34,6 +36,8 @@ private:
 	HRESULT CreateIndexBuffer();		//インデックスバッファ作成
 	HRESULT CreateConstantBuffer();		//コンスタントバッファ作成
 	HRESULT LoadTexture();				//テクスチャをロード
+
+	HRESULT LoadTexture(std::string fileName);
 
 	//--------------Draw関数から呼ばれる関数
 	void PassDataToCB(Transform transformmatNormal);		//コンスタントバッファに各種情報を渡す
@@ -61,6 +65,16 @@ public:
 
 	//引数：transform	トランスフォームクラスオブジェクト
 	void Draw(Transform& transform);	
+	void Draw(Transform& transform, RECT rect, float alpha);
+
+	//画像サイズの取得
+	//戻値：画像サイズ
+	XMFLOAT2 GetTextureSize() { return pTexture_->GetTextureSize(); }
+
+	//ロード
+	//引数：fileName	画像ファイル名
+	//戻値：成功/失敗
+	HRESULT Load(std::string fileName);
 
 	//解放
 	void Release();						

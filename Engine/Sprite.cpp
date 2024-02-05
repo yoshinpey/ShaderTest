@@ -57,6 +57,15 @@ void Sprite::Draw(Transform& transform)
     Direct3D::pContext_->DrawIndexed(indexNum_, 0, 0);
 }
 
+void Sprite::Draw(Transform& transform, RECT rect, float alpha)
+{
+}
+
+HRESULT Sprite::Load(std::string fileName)
+{
+    return E_NOTIMPL;
+}
+
 //開放処理
 void Sprite::Release()
 {
@@ -183,6 +192,22 @@ HRESULT Sprite::LoadTexture()
     if (FAILED(hr))
     {
         MessageBox(NULL, "テクスチャ読み込みに失敗しました", "エラー", MB_OK);
+        return hr;
+    }
+    return S_OK;
+}
+
+//テクスチャをロード
+HRESULT Sprite::LoadTexture(std::string fileName)
+{
+    pTexture_ = new Texture;
+
+    HRESULT hr;
+    string fname = "Assets\\" + fileName;
+    hr = pTexture_->Load(fname);
+    if (FAILED(hr))
+    {
+        MessageBox(NULL, "テクスチャの作成に失敗しました", "エラー", MB_OK);
         return hr;
     }
     return S_OK;
