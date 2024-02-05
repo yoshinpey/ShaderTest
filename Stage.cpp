@@ -3,6 +3,7 @@
 #include "Engine/Camera.h"
 #include "Engine/Input.h"
 #include "axisClass.h"
+#include "Engine/Direct3D.h"
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
@@ -21,7 +22,8 @@ void Stage::Initialize()
     ////モデルデータのロード
     //hModel_ = Model::Load("Assets/DO-NATU.fbx");
     //assert(hModel_ >= 0);
-    hModel_ = Model::Load("Assets/magicalDice2.fbx");
+
+    hModel_ = Model::Load("Assets/DO-NATU.fbx");
     assert(hModel_ >= 0);
 
     hGround_ = Model::Load("Assets/Ground.fbx");
@@ -30,6 +32,8 @@ void Stage::Initialize()
     hLightBall_ = Model::Load("Assets/RedBall.fbx");
     assert(hLightBall_ >= 0);
 
+    hTranslucent_ = Model::Load("Assets/magicalDice2.fbx");
+    assert(hTranslucent_ >= 0);
 
     trDonuts.position_ = { 0, 0, 0 };
     trDonuts.rotate_ = { 0, 0, 0 };
@@ -108,12 +112,17 @@ void Stage::Update()
 //描画
 void Stage::Draw()
 {
+    Direct3D::SetShader(SHADER_TYPE::SHADER_3D);
     Model::SetTransform(hModel_, trDonuts);
     Model::Draw(hModel_);
     //Model::SetTransform(hGround_, trGround);
     //Model::Draw(hGround_);
     Model::SetTransform(hLightBall_, trLightBall);
     Model::Draw(hLightBall_);
+
+    Direct3D::SetShader(SHADER_TYPE::SHADER_TRANSLUCENT);
+    Model::SetTransform(hTranslucent_, trLightBall);
+    Model::Draw(hTranslucent_);
 }
 
 //開放

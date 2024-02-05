@@ -163,6 +163,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TheMain.cpp" />
+    <ClCompile Include="Translucent.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="NormalMapping.hlsl" />

@@ -22,6 +22,7 @@ class Stage : public GameObject
     int hModel_;                        // トーラス
     int hGround_;                       // 地面モデル
     int hLightBall_;                    // ライトモデル
+    int hTranslucent_;                    // 透過モデル
 
     Transform trDonuts;                 // トーラスの座標
     Transform trGround;                 // 地面の座標

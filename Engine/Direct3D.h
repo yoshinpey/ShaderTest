@@ -11,7 +11,7 @@
 #define SAFE_DELETE(p) if(p != nullptr){ delete p; p = nullptr;}
 #define SAFE_RELEASE(p) if(p != nullptr){ p->Release(); p = nullptr;}
 
-//シェーダーの種類
+// シェーダーの種類
 enum SHADER_TYPE
 {
 	SHADER_2D,		//2Dシェーダー
@@ -19,7 +19,16 @@ enum SHADER_TYPE
 	SHADER_POINT,	//ポイントシェーダー
 	SHADER_TOON,	//トゥーンシェーダー
 	SHADER_NORMALMAP,	// ノーマルマップ
+	SHADER_TRANSLUCENT,	// 半透明
 	SHADER_MAX		//シェーダーの最大数
+};
+
+// ブレンドモード
+enum BLEND_MODE
+{
+	BLEND_DEFAULT, 
+	BLEND_ADD, 
+	BLEND_MAX
 };
 
 namespace Direct3D
@@ -38,6 +47,7 @@ namespace Direct3D
 	HRESULT InitShaderNormalMap();
 	HRESULT InitShaderToon();
 	HRESULT InitShaderPointLight();
+	//HRESULT InitShaderTranslucent();
 
 	//使用するシェーダーを設定
 	void SetShader(SHADER_TYPE type);
