@@ -37,7 +37,7 @@ void Stage::Initialize()
 
     trDonuts.position_ = { 0, 0, 0 };
     trDonuts.rotate_ = { 0, 0, 0 };
-    trDonuts.scale_ = { 0.2,0.2,0.2 };
+    trDonuts.scale_ = { 1,1,1 };
 
     trGround.position_ = { 0, 0, 0 };
     trGround.rotate_ = { 0, 0, 0 };
