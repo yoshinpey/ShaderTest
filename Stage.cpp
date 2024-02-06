@@ -120,7 +120,7 @@ void Stage::Draw()
     Model::SetTransform(hLightBall_, trLightBall);
     Model::Draw(hLightBall_);
 
-    Direct3D::SetShader(SHADER_TYPE::SHADER_TRANSLUCENT);
+    //Direct3D::SetShader(SHADER_TYPE::SHADER_TRANSLUCENT);
     Model::SetTransform(hTranslucent_, trLightBall);
     Model::Draw(hTranslucent_);
 }

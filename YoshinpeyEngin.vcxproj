@@ -163,7 +163,6 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TheMain.cpp" />
-    <ClCompile Include="Translucent.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="NormalMapping.hlsl" />
@@ -183,6 +182,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="Toon3D.hlsl" />
+    <FxCompile Include="Translucent.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
