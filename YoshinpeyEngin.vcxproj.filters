@@ -69,9 +69,11 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Translucent.hlsl">
-      <Filter>Shader</Filter>
+    <ClCompile Include="ImageScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="GifTexture.cpp" />
+    <ClCompile Include="GifSprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Direct3D.h">
@@ -118,6 +120,11 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="ImageScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GifTexture.h" />
+    <ClInclude Include="GifSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Simple3D.hlsl">
@@ -133,6 +140,9 @@
       <Filter>Shader</Filter>
     </FxCompile>
     <FxCompile Include="NormalMapping.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Translucent.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>

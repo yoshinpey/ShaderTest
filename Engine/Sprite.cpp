@@ -6,6 +6,12 @@ Sprite::Sprite()
 {
 }
 
+Sprite::Sprite(string _fileName)
+    : pVertexBuffer_(nullptr), pIndexBuffer_(nullptr), pConstantBuffer_(nullptr), pTexture_(nullptr),
+    vertexNum_(0), indexNum_(0), spriteFileName_(_fileName)
+{
+}
+
 Sprite::~Sprite()
 {
     Release();
@@ -166,9 +172,11 @@ HRESULT Sprite::CreateConstantBuffer()
     // コンスタントバッファの作成
     D3D11_BUFFER_DESC bd_constant{};
     bd_constant.ByteWidth = sizeof(CONSTANT_BUFFER);
-    bd_constant.Usage = D3D11_USAGE_DYNAMIC;
+    //bd_constant.Usage = D3D11_USAGE_DYNAMIC;
+    bd_constant.Usage = D3D11_USAGE_DEFAULT;// 動く画像の時変更した
     bd_constant.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    bd_constant.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+    //bd_constant.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+    bd_constant.CPUAccessFlags = 0;// 動く画像の時変更した
     bd_constant.MiscFlags = 0;
     bd_constant.StructureByteStride = 0;
 

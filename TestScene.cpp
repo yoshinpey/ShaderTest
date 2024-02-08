@@ -3,6 +3,8 @@
 
 #include "TestScene.h"
 #include "Stage.h"
+//#include "ImageScene.h"
+
 
 TestScene::TestScene(GameObject* parent)
 	:GameObject(parent, "TestScene")
@@ -12,6 +14,12 @@ TestScene::TestScene(GameObject* parent)
 void TestScene::Initialize()
 {
 	Instantiate<Stage>(this);
+	//Instantiate<ImageScene>(this);
+	//sImage = new Sprite("Assets\\Sea.png");
+	//sImage = new Sprite("Assets\\Sea.png");
+	//sImage->Initialize();
+	//sImage->Load("Sea.png");
+
 }
 
 void TestScene::Update()

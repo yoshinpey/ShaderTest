@@ -160,6 +160,9 @@
     <ClCompile Include="Engine\Sprite.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="GifSprite.cpp" />
+    <ClCompile Include="GifTexture.cpp" />
+    <ClCompile Include="ImageScene.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TheMain.cpp" />
@@ -205,6 +208,9 @@
     <ClInclude Include="Engine\Sprite.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="GifSprite.h" />
+    <ClInclude Include="GifTexture.h" />
+    <ClInclude Include="ImageScene.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TestScene.h" />
   </ItemGroup>

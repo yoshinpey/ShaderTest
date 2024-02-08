@@ -35,6 +35,9 @@ void Stage::Initialize()
     hTranslucent_ = Model::Load("Assets/magicalDice2.fbx");
     assert(hTranslucent_ >= 0);
 
+    hSea_ = Model::Load("Assets/Sea.fbx");
+    assert(hSea_ >= 0);
+
     trDonuts.position_ = { 0, 0, 0 };
     trDonuts.rotate_ = { 0, 0, 0 };
     trDonuts.scale_ = { 1,1,1 };
@@ -121,8 +124,14 @@ void Stage::Draw()
     Model::Draw(hLightBall_);
 
     //Direct3D::SetShader(SHADER_TYPE::SHADER_TRANSLUCENT);
+    //マジカルダイス
     Model::SetTransform(hTranslucent_, trLightBall);
     Model::Draw(hTranslucent_);
+
+    // 海
+    Model::SetTransform(hSea_, trDonuts);
+    Model::Draw(hSea_);
+    
 }
 
 //開放

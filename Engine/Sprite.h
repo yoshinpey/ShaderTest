@@ -37,8 +37,7 @@ private:
 	HRESULT CreateConstantBuffer();		//コンスタントバッファ作成
 	HRESULT LoadTexture();				//テクスチャをロード
 
-	HRESULT LoadTexture(std::string fileName);
-
+	HRESULT LoadTexture(std::string fileName);//テクスチャをロード
 	//--------------Draw関数から呼ばれる関数
 	void PassDataToCB(Transform transformmatNormal);		//コンスタントバッファに各種情報を渡す
 	void SetBufferToPipeline();								//各バッファをパイプラインにセット
@@ -55,9 +54,10 @@ protected:
 	ID3D11Buffer* pConstantBuffer_;		//コンスタントバッファ
 
 	Texture* pTexture_;					//テクスチャ
-
+	string spriteFileName_;
 public:
 	Sprite();
+	Sprite(string _fileName);
 	~Sprite();
 
 	//各情報初期化、戻り値：失敗/成功
